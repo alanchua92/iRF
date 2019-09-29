@@ -155,7 +155,7 @@ iRF <- function(x, y,
                       varnames.grp=varnames.grp,
                       rit.param=rit.param,
                       signed=signed,
-                      n.core=1)
+                      n.core=n.core)
     ints.eval <- ints.eval$int
     rit.param$ntree <- rit.param$ntree / n.bootstrap
 
