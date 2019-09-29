@@ -45,8 +45,8 @@ readForest <- function(rand.forest, x,
     stop('No Forest component in the randomForest object')
   varnames.grp <- groupVars(varnames.grp, x)
 
-  if (n.core == -1) n.core <- detectCores()
-  if (n.core > 1) registerDoParallel(n.core)
+# if (n.core == -1) n.core <- detectCores()
+# if (n.core > 1) registerDoParallel(n.core)
   
   ntree <- rand.forest$ntree
   n <- nrow(x)
@@ -97,7 +97,7 @@ readForest <- function(rand.forest, x,
                                  dims=c(max(nf[,1]), n))
   }
 
-  stopImplicitCluster()
+# stopImplicitCluster()
   return(out)
   
 }
