@@ -47,11 +47,7 @@ readForest <- function(rand.forest, x,
 
 # if (n.core == -1) n.core <- detectCores()
 # if (n.core > 1) registerDoParallel(n.core)
-  if (n.core > 1){
-    #registerDoParallel(n.core)
-    cl <- makeCluster(n.core)
-    registerDoParallel(cl)
-  }
+  
   ntree <- rand.forest$ntree
   n <- nrow(x)
   p <- length(unique(varnames.grp))
@@ -100,7 +96,7 @@ readForest <- function(rand.forest, x,
     out$node.obs <- sparseMatrix(i=nobs[,1], j=nobs[,2], 
                                  dims=c(max(nf[,1]), n))
   }
-  stopCluster(cl)
+
 # stopImplicitCluster()
   return(out)
   
