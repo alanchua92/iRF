@@ -51,8 +51,8 @@ gRIT <- function(x, y,
   print("test")
 # n.core = 1
   class.irf <- is.factor(y)
-  if (n.core == -1) n.core <- detectCores()  
-  if (n.core > 1) registerDoParallel(n.core)
+# if (n.core == -1) n.core <- detectCores()  
+# if (n.core > 1) registerDoParallel(n.core)
 
   # Check rit parameters and set default values if not specified
   if (is.null(rand.forest) & is.null(read.forest))
@@ -153,7 +153,7 @@ gRIT <- function(x, y,
   ximp <- mutate(ximp, int=name.sub, recovered=id.recovered) %>%
     right_join(imp.test, by='int')
 
-  stopImplicitCluster()
+  #stopImplicitCluster()
   return(ximp)
 }
 
