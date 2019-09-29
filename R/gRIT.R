@@ -46,7 +46,10 @@ gRIT <- function(x, y,
                  signed=TRUE,
                  ints.eval=NULL,
                  n.core=1) {
-
+				 
+				 
+  print("test")
+  n.core = 1
   class.irf <- is.factor(y)
   if (n.core == -1) n.core <- detectCores()  
   if (n.core > 1) registerDoParallel(n.core)
