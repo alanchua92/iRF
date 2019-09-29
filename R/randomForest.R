@@ -12,11 +12,7 @@ parRF <- function(x, y, xtest=NULL, ytest=NULL, ntree=500, n.core=1,
                   mtry.select.prob=rep(1, ncol(x)), ...) {  
   # Wrapper function to run randomForest in parallel using foreach and dorng
 # if (n.core == -1) n.core <- detectCores()
-  if (n.core > 1){
-    #registerDoParallel(n.core)
-    cl <- makeCluster(n.core)
-    registerDoParallel(cl)
-  }
+# if (n.core > 1) registerDoParallel(n.core)
 
   # Set number of trees per RF for each core
   a <- floor(ntree / n.core)
@@ -33,7 +29,6 @@ parRF <- function(x, y, xtest=NULL, ytest=NULL, ntree=500, n.core=1,
                                  ...)                         
     }
   )
-  stopCluster(cl)
 
 # stopImplicitCluster()
   return(rf)
