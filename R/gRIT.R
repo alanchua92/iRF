@@ -48,7 +48,7 @@ gRIT <- function(x, y,
                  n.core=1) {
 				 
 				 
-  print("test")
+# print("test")
   n.core = 1
   class.irf <- is.factor(y)
   if (n.core == -1) n.core <- detectCores()  
