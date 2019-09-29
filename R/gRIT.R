@@ -50,11 +50,6 @@ gRIT <- function(x, y,
 				 
 # print("test")
 # n.core = 1
-  if (n.core > 1){
-    #registerDoParallel(n.core)
-    cl <- makeCluster(n.core)
-    registerDoParallel(cl)
-  }
   class.irf <- is.factor(y)
 # if (n.core == -1) n.core <- detectCores()  
 # if (n.core > 1) registerDoParallel(n.core)
@@ -158,7 +153,6 @@ gRIT <- function(x, y,
   ximp <- mutate(ximp, int=name.sub, recovered=id.recovered) %>%
     right_join(imp.test, by='int')
 
-  stopCluster(cl)
   #stopImplicitCluster()
   return(ximp)
 }
