@@ -61,6 +61,7 @@ stabilityScore <- function(x, y,
                        ntree=ntree, weights=weights, rit.param=rit.param,
                        varnames.grp=varnames.grp, signed=signed, n.core=n.core,
                        ...)
+    print(i);
 
   }
 
