@@ -166,7 +166,7 @@ runRIT <- function(read.forest, weights, rit.param, n.core=1) {
                       n_trees=rit.param$ntree,
                       branch=rit.param$nchild,
                       output_list=TRUE,
-                      n_cores=1)$Interaction
+                      n_cores=n.core)$Interaction
   
   return(interactions)
 }
