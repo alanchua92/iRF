@@ -48,7 +48,7 @@ gRIT <- function(x, y,
                  n.core=1) {
 				 
 				 
-# print("test")
+  print("test")
 # n.core = 1
   class.irf <- is.factor(y)
   if (n.core == -1) n.core <- detectCores()  
@@ -166,7 +166,7 @@ runRIT <- function(read.forest, weights, rit.param, n.core=1) {
                       n_trees=rit.param$ntree,
                       branch=rit.param$nchild,
                       output_list=TRUE,
-                      n_cores=n.core)$Interaction
+                      n_cores=1)$Interaction
   
   return(interactions)
 }
