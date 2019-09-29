@@ -84,7 +84,7 @@ bsgRIT <- function(x, y, mtry.select.prob, sample.id, ints.eval, weights, ntree,
                rit.param=rit.param,
                signed=signed,
                ints.eval=ints.eval,
-               n.core=1)
+               n.core=n.core)
 
   return(ints)
 }
