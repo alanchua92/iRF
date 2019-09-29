@@ -68,6 +68,7 @@ iRF <- function(x, y,
                 n.core=1, 
                 interactions.return=NULL,
                 wt.pred.accuracy=NULL,
+                ints.eval=NULL,
                 ...) {
  
   # Check for depricated arguments
@@ -150,13 +151,16 @@ iRF <- function(x, y,
     # Run gRIT across RF grown on full dataset to extract interactions.
     if (verbose) cat('finding interactions...\n')
     rit.param$ntree <- rit.param$ntree * n.bootstrap
-    ints.eval <- gRIT(rf.list[[iter]], x=x, y=y,
-                      weights=weights,
-                      varnames.grp=varnames.grp,
-                      rit.param=rit.param,
-                      signed=signed,
-                      n.core=n.core)
-    ints.eval <- ints.eval$int
+    if(is.null(ints.eval)){
+      ints.eval <- gRIT(rf.list[[iter]], x=x, y=y,
+                        weights=weights,
+                        varnames.grp=varnames.grp,
+                        rit.param=rit.param,
+                        signed=signed,
+                        n.core=n.core)
+      ints.eval <- ints.eval$int
+    }
+
     rit.param$ntree <- rit.param$ntree / n.bootstrap
 
     # Grow RFs on BS samples to evaluate stability of recovered interacitons.
