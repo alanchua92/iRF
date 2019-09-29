@@ -115,8 +115,7 @@ iRF <- function(x, y,
 
   class.irf <- is.factor(y)
   importance <- ifelse(class.irf, 'MeanDecreaseGini', 'IncNodePurity')
-  if (n.core == -1) n.core <- detectCores()
-  if (n.core > 1) registerDoParallel(n.core)
+
   
   # Fit a series of iteratively re-weighted RFs 
   rf.list <- list()  
@@ -190,7 +189,7 @@ iRF <- function(x, y,
     out$interaction <- importance[[iter.return]]
     out$selected.iter <- iter.return
   }
-  stopImplicitCluster()
+
   return(out)
 }
 
